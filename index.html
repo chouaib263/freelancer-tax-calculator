@@ -1,205 +1,156 @@
+<!-- المشروع: Freelancer Tax Calculator PRO -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Freelancer Tax Calculator</title>
   <style>
-    /* ====== RESET & BASE ====== */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: #f5f7fa;
-      color: #333;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f3f5f7;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
-      padding: 40px 20px;
+      align-items: center;
       min-height: 100vh;
     }
-    h1 { font-size: 1.75rem; margin-bottom: 8px; }
-    p.subtitle { color: #666; margin-bottom: 24px; font-size: 0.95rem; }
-
-    /* ====== CARD ====== */
-    .card {
+    .container {
       background: #fff;
+      padding: 24px;
       border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-      max-width: 420px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      max-width: 480px;
       width: 100%;
-      padding: 30px;
     }
-
-    /* ====== FORM STYLES ====== */
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 24px;
+    }
     label {
       display: block;
       margin-bottom: 6px;
       font-weight: 600;
-      font-size: 0.9rem;
     }
-    select, input {
+    input, select {
       width: 100%;
-      padding: 10px 12px;
-      margin-bottom: 18px;
-      border: 1px solid #cfd8e3;
-      border-radius: 6px;
+      padding: 10px;
       font-size: 1rem;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
     }
-    select:focus, input:focus {
-      outline: none;
-      border-color: #0077ff;
-    }
-
-    /* ====== FLAG ====== */
-    .flag {
-      width: 24px;
-      height: 16px;
-      display: inline-block;
-      margin-left: 8px;
-      vertical-align: middle;
-      border-radius: 2px;
-      background-size: cover;
-    }
-    .flag-us { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 40'%3E%3Crect width='60' height='40' fill='%23b22234'/%3E%3Cg stroke='%23fff' stroke-width='1.2'%3E%3Cg fill='%23fff'%3E%3Crect width='60' height='2.7' y='0'/%3E%3Crect width='60' height='2.7' y='5.5'/%3E%3Crect width='60' height='2.7' y='11'/%3E%3Crect width='60' height='2.7' y='16.5'/%3E%3Crect width='60' height='2.7' y='22'/%3E%3Crect width='60' height='2.7' y='27.5'/%3E%3Crect width='60' height='2.7' y='33'/%3E%3Crect width='60' height='2.7' y='38.5'/%3E%3C/g%3E%3Crect width='25' height='19.5' fill='%23041e42'/%3E%3C/svg%3E"); }
-    .flag-ca { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 40'%3E%3Crect width='60' height='40' fill='%23f00'/%3E%3Crect width='20' height='40' x='20' fill='%23fff'/%3E%3Cpath d='M30 8l2 5h6l-5 4 2 5-5-4-5 4 2-5-5-4h6z' fill='%23f00'/%3E%3C/svg%3E"); }
-    .flag-uk { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 40'%3E%3Crect width='60' height='40' fill='%23012169'/%3E%3Cg stroke='%23fff' stroke-width='7'%3E%3Cpath d='m0 0 60 40m0-40L0 40'/%3E%3C/g%3E%3Cg stroke='%23C8102E' stroke-width='4'%3E%3Cpath d='m0 0 60 40m0-40L0 40'/%3E%3C/g%3E%3Cg stroke='%23fff' stroke-width='10'%3E%3Cpath d='M30 0v40M0 20h60'/%3E%3C/g%3E%3Cg stroke='%23C8102E' stroke-width='6'%3E%3Cpath d='M30 0v40M0 20h60'/%3E%3C/g%3E%3C/svg%3E"); }
-
-    /* ====== BUTTON ====== */
     button {
       width: 100%;
-      background: #0077ff;
-      color: #fff;
-      border: none;
       padding: 12px;
+      background: #007bff;
+      color: #fff;
       font-size: 1rem;
-      font-weight: 600;
+      border: none;
       border-radius: 6px;
       cursor: pointer;
-      transition: background 0.2s;
     }
-    button:hover { background: #005ed1; }
-
-    /* ====== RESULTS ====== */
-    #results {
-      margin-top: 28px;
-      display: none;
-      animation: fadeIn 0.3s ease-in-out;
+    button:hover {
+      background: #005fcc;
     }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
-    .result-box {
-      background: #f0f4ff;
-      border-left: 4px solid #0077ff;
+    .results {
+      background: #eaf5ea;
+      margin-top: 24px;
       padding: 16px;
-      border-radius: 6px;
+      border-radius: 8px;
     }
-    .result-box h3 { margin-bottom: 6px; font-size: 1.1rem; }
-    .breakdown {
-      font-size: 0.85rem;
-      color: #444;
-      margin-top: 8px;
-      line-height: 1.4;
+    .flags {
+      display: inline-block;
+      width: 20px;
+      height: 14px;
+      background-size: cover;
+      margin-left: 8px;
+      vertical-align: middle;
     }
+    .flag-us { background-image: url('https://flagcdn.com/us.svg'); }
+    .flag-ca { background-image: url('https://flagcdn.com/ca.svg'); }
+    .flag-uk { background-image: url('https://flagcdn.com/gb.svg'); }
   </style>
 </head>
 <body>
-
-  <div class="card">
+  <div class="container">
     <h1>Freelancer Tax Calculator</h1>
-    <p class="subtitle">Estimate yearly taxes for USA, Canada & UK</p>
+    <p class="subtitle">Estimate yearly taxes for 🇺🇸 USA, 🇨🇦 Canada, 🇬🇧 UK</p>
+    
+    <label for="country">Country</label>
+    <select id="country" required>
+      <option value="" disabled selected>Select country</option>
+      <option value="us">USA</option>
+      <option value="ca">Canada</option>
+      <option value="uk">UK</option>
+    </select>
 
-    <form id="taxForm">
-      <!-- Country -->
-      <label for="country">Country</label>
-      <select id="country" required>
-        <option value="" disabled selected>Select country</option>
-        <option value="usa">🇺🇸 USA</option>
-        <option value="canada">🇨🇦 Canada</option>
-        <option value="uk">🇬🇧 United Kingdom</option>
-      </select>
+    <label for="income">Annual Gross Income</label>
+    <input type="number" id="income" placeholder="e.g. 60000" />
 
-      <!-- Gross Annual Income -->
-      <label for="income">Annual Gross Income (local currency)</label>
-      <input type="number" id="income" min="0" step="0.01" placeholder="e.g. 75000" required />
-
-      <!-- Business Expenses -->
-      <label for="expenses">Business Expenses</label>
-      <input type="number" id="expenses" min="0" step="0.01" placeholder="e.g. 10000" required />
-    </form>
+    <label for="expenses">Business Expenses</label>
+    <input type="number" id="expenses" placeholder="e.g. 8000" />
 
     <button onclick="calculateTax()">Calculate Tax</button>
 
-    <!-- Results -->
-    <div id="results">
-      <div class="result-box">
-        <h3>Estimated Total Tax: <span id="totalTax">—</span></h3>
-        <div class="breakdown" id="breakdown"></div>
-      </div>
-    </div>
+    <div id="results" class="results" style="display:none;"></div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script>
-    // ====== Core calculation logic ======
     function calculateTax() {
-      const country = document.getElementById('country').value;
-      const income = parseFloat(document.getElementById('income').value);
-      const expenses = parseFloat(document.getElementById('expenses').value);
-
-      // Basic validation
+      const country = document.getElementById("country").value;
+      const income = parseFloat(document.getElementById("income").value);
+      const expenses = parseFloat(document.getElementById("expenses").value);
       if (!country || isNaN(income) || isNaN(expenses)) {
-        alert('Please fill in all fields.');
+        alert("Please fill in all fields correctly");
         return;
       }
 
-      let totalTax = 0;
-      let details = [];
+      const taxable = income - expenses;
+      let tax = 0, breakdown = "";
 
-      const net = income - expenses;
-
-      switch (country) {
-        case 'usa':
-          const seTax = net * 0.153;
-          totalTax = seTax;
-          details.push(`Self-employment tax (15.3% of $${net.toFixed(2)}) = $${seTax.toFixed(2)}`);
-          break;
-
-        case 'canada':
-          const cpp = net * 0.119;
-          const incomeTax = net * 0.15;
-          totalTax = cpp + incomeTax;
-          details.push(`CPP (11.9%) = $${cpp.toFixed(2)}`);
-          details.push(`Income tax (15%) = $${incomeTax.toFixed(2)}`);
-          break;
-
-        case 'uk':
-          const weeks = 52;
-          const class2 = 3.45 * weeks;
-          const class4 = net * 0.09;
-          totalTax = class2 + class4;
-          details.push(`Class 2 NIC (£3.45 × 52 weeks) = £${class2.toFixed(2)}`);
-          details.push(`Class 4 NIC (9%) = £${class4.toFixed(2)}`);
-          break;
+      if (country === "us") {
+        tax = taxable * 0.153;
+        breakdown = `Self-employment tax (15.3%) = $${tax.toFixed(2)}`;
+      } else if (country === "ca") {
+        const cpp = taxable * 0.119;
+        const incomeTax = taxable * 0.15;
+        tax = cpp + incomeTax;
+        breakdown = `CPP (11.9%) = $${cpp.toFixed(2)}<br>Income Tax (15%) = $${incomeTax.toFixed(2)}`;
+      } else if (country === "uk") {
+        const class2 = 3.45 * 52;
+        const class4 = taxable * 0.09;
+        tax = class2 + class4;
+        breakdown = `Class 2 (£3.45×52) = £${class2.toFixed(2)}<br>Class 4 (9%) = £${class4.toFixed(2)}`;
       }
 
-      // Display results
-      const symbol = country === 'uk' ? '£' : '$';
-      document.getElementById('totalTax').textContent = `${symbol}${totalTax.toFixed(2)}`;
-      document.getElementById('breakdown').innerHTML = details.join('<br>');
-      document.getElementById('results').style.display = 'block';
+      const symbol = country === "uk" ? "£" : "$";
+      document.getElementById("results").style.display = "block";
+      document.getElementById("results").innerHTML = `
+        <strong>Total Estimated Tax: ${symbol}${tax.toFixed(2)}</strong><br><br>
+        ${breakdown}<br><br>
+        Taxable Income: ${symbol}${taxable.toFixed(2)}<br>
+        <button onclick="exportPDF()">📄 Download PDF</button>
+      `;
     }
 
-    // Optional: Add small flag icon next to select on change
-    document.getElementById('country').addEventListener('change', (e) => {
-      const sel = e.target;
-      // Remove previous flag
-      sel.parentNode.querySelectorAll('.flag').forEach(el => el.remove());
-      const flag = document.createElement('span');
-      if (sel.value === 'usa') flag.className = 'flag flag-us';
-      if (sel.value === 'canada') flag.className = 'flag flag-ca';
-      if (sel.value === 'uk') flag.className = 'flag flag-uk';
-      sel.parentNode.insertBefore(flag, sel.nextSibling);
-    });
+    function exportPDF() {
+      const element = document.getElementById("results");
+      html2pdf().from(element).set({
+        margin: 0.5,
+        filename: "freelancer_tax_report.pdf",
+        jsPDF: { format: "letter", orientation: "portrait" }
+      }).save();
+    }
   </script>
 </body>
 </html>
-
-<button id="exportBtn">📄 Download Results as PDF</button>
