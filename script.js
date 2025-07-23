@@ -1,3 +1,6 @@
+const result = calculateTax(country, income, expenses);
+
+
 document.getElementById("taxForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
