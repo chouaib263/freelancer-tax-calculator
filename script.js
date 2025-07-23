@@ -29,3 +29,15 @@ document.getElementById("taxForm").addEventListener("submit", function (e) {
     <p>Taxable Income: $${taxableIncome.toFixed(2)}</p>
   `;
 });
+
+document.getElementById("exportBtn").addEventListener("click", () => {
+  const element = document.getElementById("results");
+  const options = {
+    filename: 'freelancer_tax_summary.pdf',
+    margin: 0.5,
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+  };
+  html2pdf().set(options).from(element).save();
+});
